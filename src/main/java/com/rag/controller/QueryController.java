@@ -3,6 +3,7 @@ package com.rag.controller;
 import com.rag.model.QueryRequest;
 import com.rag.service.QueryService;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class QueryController {
      * @return generated response from RAG pipeline
      */
     @PostMapping("/ask")
-    public ResponseEntity<String> askQuestion(@RequestBody QueryRequest request) {
+    public ResponseEntity<String> askQuestion(@Valid @RequestBody QueryRequest request) {
 
         if (request == null || request.getQuestion() == null || request.getQuestion().isBlank()) {
             return ResponseEntity.badRequest().body("Question must not be empty");
