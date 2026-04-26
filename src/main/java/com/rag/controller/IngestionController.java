@@ -1,6 +1,7 @@
 package com.rag.controller;
 
 import com.rag.model.IngestRequest;
+import com.rag.model.ApiResponse;
 import com.rag.service.IngestionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,6 @@ public class IngestionController {
 
         ingestionService.ingest(request.getDocument());
 
-        return ResponseEntity.ok("Document ingested successfully");
+        return ResponseEntity.ok(new ApiResponse("Document ingested successfully"));
     }
 }
